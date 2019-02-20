@@ -1,0 +1,67 @@
+to update comments section only:
+
+cd <hosting directory of programthinkmirror>
+cd forum4
+./year.sh
+./master0.sh
+./master6.sh
+rm *.html
+./master4.sh
+
+<--THE FOLLOWING IS DEPRECATED!!!
+when programthink adds new blog article:
+
+take full (rolling/long weibo) screenshot of blog article
+save as "<you pick name>.png"
+open "short.html" under original "blog" folder of BT Sync
+replace <title> with title of new blog article
+replace <h1> with title of new blog article
+replace <img src> with "<you pick name>.png"
+save "short.html" into target year, month and the html name of new blog article into original "blog" folder of BT Sync
+run midnight commander
+left pane: displays original "blog" folder of BT Sync
+right pane: displays cd <hosting directory of programthinkmirror>
+in right pane delete all year-number folders
+copy all year-number folders from left pane to right pane, one by one, with recursive copy
+exit midnight commander
+cd <hosting directory of programthinkmirror>
+edit src/mlist/mlist
+add in url of new blog article at top
+cp src/mlist/mlist .
+(you may alternatively perform a wc -l check to ensure number of lines matches current # of blog articles on programthink)
+edit src/nlist/nlist
+add in Blogger RSS feed number of new blog article at top
+cd forum
+cp ../src/nlist/nlist .
+(you may alternatively perform a wc -l check to ensure number of lines matches current # of blog articles on programthink)
+./master0.sh
+./master4.sh
+cd ..
+./master1.sh
+./master3.sh
+edit index.html and add in new entry for new blog article
+END OF DEPRECATED SECTION!!! -->
+
+when programthink updates BT Sync blog folder:
+update src/mlist/mlist
+update src/nlist/nlist
+cp src/mlist/mlist .
+cp src/nlist/nlist forum3/
+update forum as per start of this README
+delete everything from <hosting directory of programthinkmirror> EXCEPT src/ forum3/ and the files in ./
+use midnight commander to copy everything from updated "blog" folder of BT Sync to <hosting directory of programthinkmirror>
+cd <hosting directory of programthinkmirror>
+./master1.sh
+./master7.sh
+sed -i -e 's/http:/https:/g' index.html
+(other manual cosmetic changes are applied to index.html at your discretion, please refer to index.html in this repository)
+
+
+an additional note on src/:
+
+the src/ contains both production and historical/deprecated codes,
+folders containing production codes are:
+pt10/
+pt16/
+pt18/
+pt19/

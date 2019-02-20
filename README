@@ -1,0 +1,147 @@
+Courtesy of @chenmaop:
+https://rawgit.com/posclegom/programthinkmirror/master/
+这个是墙内可达的
+对于repo过大不好下载有一个不太优雅的解决方案,就是利用 svn checkout https://github.com/posclegom/programthinkmirror/trunk/forum4 只选择性下载forum4文件夹,其余部分直接从btsync中复制过来
+
+for my dear old friend
+
+all scripts below, (in the form of master[n].sh)
+presumes that the <BTSync folder of programthinkmirror>
+is /root/blog/
+you need to change that folder in all the scripts
+to have them work properly if your BTSync reception
+folder of programthinkmirror is different.
+
+
+to update forum section only:
+
+cd <hosting directory of programthinkmirror>
+cd forum4
+./year.sh
+wc -l olddd
+wc -l newww
+make sure the two match
+ if not, then programthink has added a new blog article
+ in this case please refer to section below
+./master0.sh
+./master6.sh
+./master4.sh
+
+
+when programthink has added a new blog article:
+(note: sometimes programthink lags in updating the
+BTSync off-line blog folder, in this case one
+can update the forum section first, then update
+the blog when the updated off-line blog folder
+becomes available later. That is, updating the nlist
+without updating the mlist, and carry out all the
+steps associated with updating the nlist/forum without
+carrying out the final steps associated with updating
+the mlist and the overall blog, e.g. master7.sh, etc.)
+
+update src/mlist/mlist
+update src/nlist/nlist
+cp src/mlist/mlist .
+cp src/nlist/nlist forum4/
+cd forum4
+mv ../src/pt17/shift.sh .
+edit seq <bign> ... to seq <bign++> ...
+uncomment seq line
+./shift.sh (RUN ONLY ONCE!!!)
+recomment seq line
+mv shift.sh ../src/pt17/
+./year.sh
+vim olddd
+add "0\n" line to the beginning of olddd
+wc -l olddd
+wc -l newww
+wc -l nlist
+wc -l ../mlist
+make sure all 4 match
+./master0.sh
+./master6.sh
+./master4.sh
+cd ..
+./master9b.sh
+./master9.sh
+./master7.sh
+cp <BTSync folder of blog>/blog/html/index.html .
+sed -i -e 's/http:/https:/g' index.html
+(other manual cosmetic changes are applied to index.html at your discretion, please refer to index.html in this repository)
+cd forum4
+vim point
+add initial comment count of new blog article to beginning of file
+:wq
+
+
+an additional note on src/:
+
+the src/ contains both production and historical/deprecated codes,
+folders containing production codes are:
+pt10/
+pt17/
+pt18/
+pt20/
+pt21/
+
+an additional note on >500 forums for the first time:
+
+when an article's forum comments exceed 500,
+do the following after updating the forum section:
+./master9b.sh
+./master9.sh
+./master7.sh
+
+
+an additional note on >1000 forums:
+
+comments >500 are all appended into section C
+pt17/sensor.sh reveals difference between last checkpoint
+when difference exceed 500,
+(use the lab/ directory for the following)
+# append section B to current section C
+# and make resulting file the new section C
+vim nB.xml
+:set encoding=utf-8
+:wq
+vim nC.xml
+:set encoding=utf-8
+:wq
+cat nB.xml nC.xml > out.xml
+vim out.xml
+:set encoding=utf-8
+:set nowrap
+go to second line
+1500x
+150x
+then x until the first <entry> tag
+go to first line
+$
+remove ending </feed> tag
+:wq
+mv out.xml ../forum4/nC.xml
+cd ../forum4
+vi point
+update *ONLY the specific line* of the file being worked on
+:wq
+
+note on code in labforum/ and src/pt21/
+these codes are for verifying that the number of comments
+for each forum are up-to-date with respect to actual counts
+in the real forums on program-think.blogspot.com
+how to use:
+after a fresh forum update
+cd forum4/
+cp *.xml ../labforum/
+cd ..
+cd labforum
+./master4.sh
+./count.sh > count
+diff count ../forum4/newww
+(result from diff should be totally blank, any output
+from diff indicates discrepancy between mirror forum
+and actual forum and can be investigated by following
+the line number on the display for diff, the line numbers
+start from 1, so 1 should be subtracted from the line
+number outputs in order to go to the relevant
+forums)

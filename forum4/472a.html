@@ -1,0 +1,14 @@
+<html xmlns:my="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="../css/program-think.css">
+</head>
+<body>
+<h1>Comments on 编程随想的博客: 开源点评：ZeroMQ 简介</h1>
+<p><strong><font color="red">updated </font></strong>2011-08-31T10:48:33.979+08:00<br><strong><font color="red">content </font></strong>ZMQ的优点和缺点在于broker-less的结构， 没有一个服务器来接收和转发消息，这个当然比其他mq性能大大提高，但是问题在于zmq没有实际的服务器，无法保存消息，如果期间发生错误，会导致消息丢失，而其他mq，如rabbitmq，是可以保存未处理的消息的。&lt;br /&gt;文章的这段文字才是重点：&lt;br /&gt;ZeroMQ, with its brokerless architecture doesn’t require any server process or runtime. In effect, your application endpoints play the server role. This makes deployment simpler, but the worry is that there’s no obvious place to go looking when things go wrong. ZeroMQ, as far as I can tell, only provides non-durable queues. You are expected to provide your own auditing and recovery where you need it. To be honest, I’m not even sure that ZeroMQ should be in this test, it’s such a different concept than the other MQ products.<br><strong><font color="red">author </font></strong>yan<br><strong><font color="red">uri </font></strong>html<br><strong><font color="red">avatar </font></strong>http://img1.blogblog.com/img/blank.gif</p>
+<p><strong><font color="red">updated </font></strong>2011-08-17T11:12:47.586+08:00<br><strong><font color="red">content </font></strong>俺是门外汉，不过觉得你说的很好&lt;br /&gt;赞一个<br><strong><font color="red">author </font></strong>Anonymous<br><strong><font color="red">uri </font></strong>html<br><strong><font color="red">avatar </font></strong>http://img1.blogblog.com/img/blank.gif</p>
+<p><strong><font color="red">updated </font></strong>2011-08-16T01:44:03.389+08:00<br><strong><font color="red">content </font></strong>之前读过ACE书上介绍的网络日志库的例子,&amp;lt;&amp;gt;一书中也有.不知如果用ZMQ实现会怎么样,ACE我感觉还是比较复杂的.谢谢.<br><strong><font color="red">author </font></strong>wl_99888's blogger<br><strong><font color="red">uri </font></strong>html<br><strong><font color="red">avatar </font></strong>http://img1.blogblog.com/img/b16-rounded.gif</p>
+<p><strong><font color="red">updated </font></strong>2011-08-15T23:31:26.719+08:00<br><strong><font color="red">content </font></strong>俺是外行。能不能解释一下tcp，socket，JMS，ZMQ之间是啥关系？分别在什么层次上？<br><strong><font color="red">author </font></strong>瘦肉丝<br><strong><font color="red">uri </font></strong>html<br><strong><font color="red">avatar </font></strong>http://img1.blogblog.com/img/b16-rounded.gif</p>
+<p><strong><font color="red">updated </font></strong>2011-08-15T01:32:51.809+08:00<br><strong><font color="red">content </font></strong>关注。只怕马上就要用到这一类的东西。听介绍似乎非常好，期待实战经验帖。<br><strong><font color="red">author </font></strong>plusium<br><strong><font color="red">uri </font></strong>html<br><strong><font color="red">avatar </font></strong>http://img1.blogblog.com/img/b16-rounded.gif</p>
+</body>
+</html>

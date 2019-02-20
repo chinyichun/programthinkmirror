@@ -1,0 +1,9 @@
+#!/bin/bash
+
+a=`wc -l < 0a.html`
+echo $a
+
+b=`wc -l < 1a.html`
+echo $b
+
+echo $(expr $a + $b)
