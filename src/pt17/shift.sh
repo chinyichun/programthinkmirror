@@ -4,7 +4,7 @@ a=a.xml
 b=b.xml
 c=c.xml
 
-#for i in `seq 652 -1 0`;
+#for i in `seq 653 -1 0`;
 do
  j=$((i+1))
  mv $i$a $j$a
