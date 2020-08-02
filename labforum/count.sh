@@ -4,7 +4,7 @@ c=a.html
 d=b.html
 e=c.html
 
-for i in `seq 0 679`
+for i in `seq 0 688`
 do
  if [ -e $i$e ]
  then
