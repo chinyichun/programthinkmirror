@@ -1,7 +1,6 @@
 #!/bin/bash
 
 mv newww olddd
-rm neww
 wget --no-check-certificate -O 2020.html https://program-think.blogspot.com/2020/
 wget --no-check-certificate -O 2019.html https://program-think.blogspot.com/2019/
 wget --no-check-certificate -O 2018.html https://program-think.blogspot.com/2018/
@@ -27,3 +26,4 @@ sed -n -e 's/^.*\#comments\x27>//p' 2011.html >> neww
 sed -n -e 's/^.*\#comments\x27>//p' 2010.html >> neww
 sed -n -e 's/^.*\#comments\x27>//p' 2009.html >> neww
 cat neww | cut -f 1 -d " " > newww
+rm neww

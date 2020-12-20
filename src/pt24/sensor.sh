@@ -9,9 +9,9 @@ while read p; do
  then
   if [ -e $i$l ]
   then
-  echo -e "$p $q $(( p - q )) \t $i $j \t EXISTS!"
+  echo -e "$p $q $(( p - q )) \t $i \t EXISTS!"
   else
-  echo -e "$p $q $(( p - q )) \t $i $j \t NULL!"
+  echo -e "$p $q $(( p - q )) \t $i \t NULL!"
   fi
  fi
  ((i++))

@@ -7,15 +7,15 @@ while read p; do
  if [ "$q" -ne "$r" ]
  then
   echo $p
-  cat "$i"a.xml | sh getfirst $(expr $q - $r) > $i.out
-  head -1 $i.xml > $i.head
+  sed 's/<entry>/\n<entry>/g' "$i"a.xml > $i.out
+  sed 's/<\/feed>/\n/g' $i.out > $i.out2
   tail -n +2 $i.xml > $i.tail
-  cat $i.head $i.out $i.tail > $i.xml
+  cat $i.out2 $i.tail > $i.xml
  fi
  ((i++))
 done <nlist 3<newww 4<olddd
 
-rm *.head
 rm *.out
+rm *.out2
 rm *.tail
 rm *a.xml

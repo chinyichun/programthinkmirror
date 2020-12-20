@@ -9,9 +9,10 @@ while read p; do
   echo $p
   a="wget --no-check-certificate -O"
   b="a.xml https://program-think.blogspot.com/feeds/"
-  c="/comments/default?max-results=999"
-  d="$a $i$b$p$c"
-  $d
+  c="/comments/default?max-results="
+  d=$(expr $q - $r)
+  e="$a $i$b$p$c$d"
+  $e
  fi
  ((i++))
 done <nlist 3<newww 4<olddd
