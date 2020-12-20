@@ -1,0 +1,2 @@
+sed 's/<entry>/\
+&/g' | grep '<entry>' | head -$1
