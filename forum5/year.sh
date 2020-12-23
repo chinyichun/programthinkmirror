@@ -27,3 +27,4 @@ sed -n -e 's/^.*\#comments\x27>//p' 2010.html >> neww
 sed -n -e 's/^.*\#comments\x27>//p' 2009.html >> neww
 cat neww | cut -f 1 -d " " > newww
 rm neww
+rm *.html
