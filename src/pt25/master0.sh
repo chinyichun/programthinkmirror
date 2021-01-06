@@ -1,7 +1,8 @@
 #!/bin/bash
 
 i=0
-while read p; do
+while read p
+do
  read q <&3
  read r <&4
  if [ "$q" -ne "$r" ]
