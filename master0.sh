@@ -26,6 +26,11 @@ fi
 if [ "$i" -lt 1 ]
 then
  echo "NO CHANGE!"
+ rm out*.xml
+ rm *.out
+ rm new*.xml
+ mv curr.xml prev.xml
+ rm cur.xml
  exit
 fi
 
