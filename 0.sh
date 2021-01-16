@@ -62,7 +62,18 @@ do
  cd $q
  if [ ! -e $r.xml ]
  then
-  printf "line 1\nline 2\nline 3\n" > $r.xml
+  wget --no-check-certificate -O out.html "https://program-think.blogspot.com/$p/$q/$r"
+  sed -n -e 's/^.*https:\/\/program-think.blogspot.com\/feeds\///p' out.html > out2
+  sed -n 3p out2 > out3
+  sed '0,/\//s//\n/' out3 > out4
+  q=$(head -n 1 out4)
+  echo $q
+  wget --no-check-certificate -O out5 "https://program-think.blogspot.com/feeds/$q/comments/default?max-results=1"
+  sed 's/<entry>/\n<entry>/g' out5 > out6
+  sed 's/<\/feed>/\n<\/feed>\n/g' out6 > out7
+  sed -e '2d' out7 > $r.xml
+  rm out*
+  #printf "line 1\nline 2\nline 3\n" > $r.xml
  fi
  head -1 $r.xml > daeh
  tail -n +2 $r.xml > liat
@@ -75,7 +86,7 @@ do
  mv liat newww.xml
 done < out7.xml
 
-rm out*.xml
+rm out*
 rm *.out
 rm new*.xml
 mv curr.xml prev.xml
