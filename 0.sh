@@ -62,8 +62,8 @@ do
  cd $q
  if [ ! -e $r.xml ]
  then
-  wget --no-check-certificate -O out.html "https://program-think.blogspot.com/$p/$q/$r"
-  sed -n -e 's/^.*https:\/\/program-think.blogspot.com\/feeds\///p' out.html > out2
+  wget --no-check-certificate -O out "https://program-think.blogspot.com/$p/$q/$r"
+  sed -n -e 's/^.*https:\/\/program-think.blogspot.com\/feeds\///p' out > out2
   sed -n 3p out2 > out3
   sed '0,/\//s//\n/' out3 > out4
   q=$(head -n 1 out4)
